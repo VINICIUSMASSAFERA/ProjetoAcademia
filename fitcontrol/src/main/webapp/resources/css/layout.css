@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: Play;
+	src: url('Play-Regular.ttf') format('opentype');
+}
+
+.Play {
+	font-family: Play !important;
+}
+
+.TituloLogin {
+	font-size: 1.6em !important;
+	font-weight: bolder !important;
+}
+
+.White {
+	color: #fff !important;
+}
+
+.MarginAuto {
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+.EmptyBox20 {
+	margin: 2rem !important;
+}
+
+.EmptyBox {
+	margin: 1rem !important;
+}
+
+.Grey {
+	color: grey;
+}
+
+.Button {
+	border: 0px solid !important;
+	margin-top: 10px !important;
+	font-weight: bolder !important;
+}
+
+.BlueButton {
+	background-color: #29A2E3 !important;
+}
+
+.RedButton {
+	background-color: #ff3036 !important;
+}
+
+.WhiteButton {
+	color: #ff3036 !important;
+	background-color: #fff !important;
+}
+
+.GreyButton {
+	background-color: #8B8A8A !important;
+}
+
+.BorderNone {
+	border: none !important;
+}
+
+body .ui-panelgrid .ui-panelgrid-cell {
+	padding: 0em !important;
+}
+
+body .ui-panel .ui-panel-content {
+	background: #3e3e3e;
+	border: 1px solid #3e3e3e;
+}
+
+.AlignCenter {
+	text-align: center !important;
+}
+
+.AlignLeft {
+	text-align: left !important;
+}
+
+.LoginBody {
+	margin-top: 5% !important;
+}
+
+.BackgroundImage {
+	background-image: url("/fitcontrol/resources/img/background.jpg");
+}
+
+.Wid100 {
+	width: 100% !important;
+}
+
+.Wid90 {
+	width: 90% !important;
+}
+
+.Wid80 {
+	width: 80% !important;
+}
+
+.Wid70 {
+	width: 70% !important;
+}
+
+.Wid60 {
+	width: 60% !important;
+}
+
+.Wid50 {
+	width: 50% !important;
+}
+
+.Wid40 {
+	width: 40% !important;
+}
+
+.Wid30 {
+	width: 30% !important;
+}
+
+.Wid20 {
+	width: 20% !important;
+}
+
+.Wid10 {
+	width: 10% !important;
+}
+
+body .ui-button {
+	border-radius: 0px !important;
+}
+
+body .ui-inputfield {
+	border-radius: 0px !important;
+}
