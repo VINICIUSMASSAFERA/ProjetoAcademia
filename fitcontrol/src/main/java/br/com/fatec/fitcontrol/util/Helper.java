@@ -53,4 +53,8 @@ public class Helper {
 			}
 		}
 	}
+
+	public static String removerMascara(String cpf) {
+		return cpf.replaceAll("[^0-9]", "");
+	}
 }

@@ -35,10 +35,45 @@
 	color: grey;
 }
 
+.MarginTop10 {
+	margin-top: 10px;
+}
+
 .Button {
 	border: 0px solid !important;
 	margin-top: 10px !important;
 	font-weight: bolder !important;
+}
+
+.CardButton {
+	display: inline-block;
+	margin-bottom: 0;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 0px solid !important;
+	margin-top: 10px !important;
+	font-weight: bolder !important;
+	color: #fff;
+	background-color: #ff3036;
+	text-decoration: none;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	border-radius: 2px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	vertical-align: middle;
 }
 
 .BlueButton {
@@ -133,4 +168,45 @@ body .ui-button {
 
 body .ui-inputfield {
 	border-radius: 0px !important;
+}
+
+.topnav {
+	background-color: #3e3e3e;
+	overflow: hidden;
+}
+
+body {
+	background-color: #3e3e3e;
+}
+
+.topnav a {
+	float: left;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-weight: bolder;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.topnav a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+.topnav a.active {
+	background-color: #ff3036;
+	color: white;
+}
+
+.Logo {
+	float: left;
+	display: inline-block;
+	vertical-align: top;
+	width: 150px;
+	height: 46px;
+	margin-right: 20px;
+	margin-top: 2px;
 }

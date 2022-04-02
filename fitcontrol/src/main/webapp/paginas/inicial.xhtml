@@ -14,14 +14,27 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 	</f:facet>
 	<title>Início</title>
-	<link rel="shortcut icon" type="image/x-icon" href="#{resource['img/favicon.png']}" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['img/favicon.png']}" />
 	<h:outputStylesheet library="css" name="layout.css" />
 	<h:outputScript library="js" name="prime.js" />
 </h:head>
 
 <h:body>
+	<div class="topnav">
+		<p:graphicImage name="logo.png" library="img" styleClass="Logo" />
+
+		<a class="active" href="#">Home</a> <a href="#">Meu Treino</a> <a
+			href="#">Meus Objetivos</a> <a href="#">Histórico</a> <a href="#">Dicas
+			da Semana</a>
+	</div>
+	<div class="EmptyBox20"></div>
 	<h:form id="frm">
-		
+		<a href="#" class="CardButton Wid100 MarginTop10">MEU TREINO </a>
+		<a href="#" class="CardButton Wid100 MarginTop10">MEUS OBJETIVOS </a>
+		<a href="#" class="CardButton Wid100 MarginTop10">HISTÓRICO </a>
+		<a href="#" class="CardButton Wid100 MarginTop10">DICAS DA SEMANA
+		</a>
 	</h:form>
 </h:body>
 </html>
