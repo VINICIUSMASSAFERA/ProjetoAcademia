@@ -13,6 +13,7 @@
 		<property name="format_sql">true</property>
 
 		<mapping class="br.com.fatec.fitcontrol.domain.Usuario" />
+		<mapping class="br.com.fatec.fitcontrol.domain.DicasSemana" />
 		<mapping
 			class="br.com.fatec.fitcontrol.domain.DadosObjetivoUsuario" />
 	</session-factory>

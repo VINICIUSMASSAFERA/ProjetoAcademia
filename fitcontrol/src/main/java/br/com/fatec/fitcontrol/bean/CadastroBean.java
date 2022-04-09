@@ -38,6 +38,7 @@ public class CadastroBean {
 			Helper.emailValido(usuario.getEmail());
 			usuario.setCpf(Helper.removerMascara(usuario.getCpf()));
 			usuario.setDataDeCadastro(new Date());
+			usuario.setAdmin(false);
 			salvarObjetivosDoUsuario();
 			usuarioService.salvar(usuario);
 			limparCampos();

@@ -29,21 +29,25 @@ public class Usuario {
 	@Column
 	private String celular;
 
+	@Column
+	private Boolean admin;
+
 	@Column(nullable = false)
 	private String senha;
 
-	public Usuario(String cpf, String nome, Date dataDeNascimento, String email, String celular, String senha)
-			throws EmailInvalidoException {
+	public Usuario(String cpf, String nome, Date dataDeNascimento, String email, String celular, Boolean admin,
+			String senha) throws EmailInvalidoException {
 		this.cpf = cpf;
 		this.nome = nome;
 		this.dataDeNascimento = dataDeNascimento;
 		this.dataDeCadastro = new Date();
 		this.email = email;
 		this.celular = celular;
+		this.admin = admin;
 		this.senha = senha;
 	}
 
-	public Usuario(String cpf, String nome, Date dataDeNascimento, String email, String senha)
+	public Usuario(String cpf, String nome, Date dataDeNascimento, String email, String senha, Boolean admin)
 			throws EmailInvalidoException {
 		this.cpf = cpf;
 		this.nome = nome;
@@ -51,6 +55,7 @@ public class Usuario {
 		this.dataDeCadastro = new Date();
 		this.email = email;
 		this.senha = senha;
+		this.admin = admin;
 	}
 
 	public Usuario() {
@@ -112,8 +117,16 @@ public class Usuario {
 		this.senha = senha;
 	}
 
+	public Boolean getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
+	}
+
 	@Override
 	public String toString() {
-		return "Usuário: {" + cpf + " / " + nome + " / " + email + " / " + celular + " / " + senha + "}";
+		return "Usuário: {" + cpf + " / " + nome + " / " + email + " / " + celular + " / " + admin + "}";
 	}
 }

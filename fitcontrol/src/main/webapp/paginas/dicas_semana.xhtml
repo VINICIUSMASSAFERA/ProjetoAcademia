@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+	</f:facet>
+	<title>Dicas da Semana</title>
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['img/favicon.png']}" />
+	<h:outputStylesheet library="css" name="layout.css" />
+	<h:outputScript library="js" name="prime.js" />
+</h:head>
+
+<h:body>
+	<div class="topnav">
+		<p:graphicImage name="logo.png" library="img" styleClass="Logo" />
+
+		<a href="#">Home</a> <a href="./meu_treino.xhtml">Meu Treino</a> <a
+			href="./meus_objetivos.xhtml">Meus Objetivos</a> <a
+			href="./historico.xhtml">Histórico</a> <a class="active"
+			href="./dicas_semana.xhtml">Dicas da Semana</a>
+	</div>
+	<div class="EmptyBox20"></div>
+	<p:growl id="growl">
+		<p:autoUpdate />
+	</p:growl>
+	<h:form id="frmPrincipal">
+		<p:panel header="Nova Dica"
+			rendered="#{autorizacaoBean.usuarioLogado.admin}">
+			<p:panelGrid columns="2" styleClass="Wid100 ui-panelgrid-blank">
+				<p:outputLabel value="Dica:" for="dica" styleClass="White" />
+				<p:inputText id="dica" placeholder="Dica"
+					requiredMessage="O campo dica é obrigatório" styleClass="Wid100"
+					autocomplete="off" value="#{dicasSemanaBean.dicaAdicionar.dica}"
+					required="true" />
+
+				<p:outputLabel value="Descrição:" for="descricao" styleClass="White" />
+				<p:inputText id="descricao" placeholder="Descrição"
+					requiredMessage="O campo descrição é obrigatório"
+					styleClass="Wid100" autocomplete="off"
+					value="#{dicasSemanaBean.dicaAdicionar.descricao}" required="true" />
+
+				<p:outputLabel value="Validade:" for="validade" styleClass="White" />
+				<p:datePicker id="validade" placeholder="Data de Validade"
+					value="#{dicasSemanaBean.dicaAdicionar.dataValidade}"
+					required="true"
+					requiredMessage="O campo data de validade é obrigatório"
+					styleClass="Wid100 AlignLeft" inputStyleClass="Wid100"
+					autocomplete="off" />
+			</p:panelGrid>
+			<p:panelGrid columns="1" styleClass="Wid100 ui-panelgrid-blank">
+				<p:commandButton value="Salvar Dica"
+					styleClass="Wid100 Button RedButton"
+					actionListener="#{dicasSemanaBean.salvar}"
+					update="frmPrincipal growl" />
+			</p:panelGrid>
+			<div class="EmptyBox20"></div>
+		</p:panel>
+		<p:dataTable value="#{dicasSemanaBean.dicasDaSemana}" var="dica">
+			<p:column headerText="Dica">
+				#{dica.dica}
+			</p:column>
+			<p:column headerText="Descrição">
+				#{dica.descricao}
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

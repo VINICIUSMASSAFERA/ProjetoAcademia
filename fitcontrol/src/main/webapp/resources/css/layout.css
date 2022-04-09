@@ -210,3 +210,9 @@ body {
 	margin-right: 20px;
 	margin-top: 2px;
 }
+
+body .ui-panel .ui-panel-titlebar {
+	background: #ff3036;
+	border: none;
+	color: white;
+}
