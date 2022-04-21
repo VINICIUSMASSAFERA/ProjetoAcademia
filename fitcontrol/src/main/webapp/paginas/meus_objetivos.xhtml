@@ -24,13 +24,111 @@
 	<div class="topnav">
 		<p:graphicImage name="logo.png" library="img" styleClass="Logo" />
 
-		<a href="#">Home</a>
-		<a href="./meu_treino.xhtml">Meu Treino</a>
-		<a class="active" href="./meus_objetivos.xhtml">Meus Objetivos</a>
-		<a href="./historico.xhtml">Histórico</a>
-		<a href="./dicas_semana.xhtml">Dicas da Semana</a>
+		<a href="./inicial.xhtml">Home</a> <a href="./meu_treino.xhtml">Meu
+			Treino</a> <a class="active" href="./meus_objetivos.xhtml">Meus
+			Objetivos</a> <a href="./historico.xhtml">Histórico</a> <a
+			href="./dicas_semana.xhtml">Dicas da Semana</a>
 	</div>
 	<div class="EmptyBox20"></div>
+	<p:growl id="growl">
+		<p:autoUpdate />
+	</p:growl>
+	<h:form id="frmPrincipal">
+		<p:outputPanel id="pnlDadosObjetivos">
 
+			<p:panelGrid id="pgDadosObjetivos" styleClass="Wid100">
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="4">
+							<p:outputLabel value="Objetivo" styleClass="FontSize4" />
+						</p:column>
+					</p:row>
+				</f:facet>
+
+				<p:row>
+					<p:column styleClass="Bold">Nome</p:column>
+					<p:column colspan="3">
+						<h:outputText value="#{meusObjetivosBean.usuarioLogado.nome}" />
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column styleClass="Bold">Objetivo</p:column>
+					<p:column colspan="3">
+						<h:outputText value="#{meusObjetivosBean.dados.objetivo}" />
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column styleClass="Bold">Qtd. de dias disponíveis</p:column>
+					<p:column>
+						<h:outputText
+							value="#{meusObjetivosBean.dados.diasDisponiveis} Dias" />
+					</p:column>
+
+					<p:column styleClass="Bold">Tempo disponível</p:column>
+					<p:column>
+						<h:outputText
+							value="#{meusObjetivosBean.dados.tempoDisponivel} minutos" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</p:outputPanel>
+
+		<p:commandButton value="Editar objetivo"
+			onclick="PF('dlgEditar').show();"
+			styleClass="Wid100 Button RedButton" />
+
+		<p:dialog id="dlgEditar" widgetVar="dlgEditar" closable="true"
+			closeOnEscape="true" draggable="false" modal="true" resizable="false"
+			responsive="true" header="Editar objetivo">
+			<p:selectOneMenu id="objetivo" styleClass="Wid100" required="true"
+				placeholder="Qual o seu objetivo? (*)" autocomplete="off"
+				value="#{meusObjetivosBean.dados.objetivo}"
+				requiredMessage="Selecione o seu objetivo">
+				<f:selectItem itemLabel="Selecione o seu objetivo"
+					noSelectionOption="true" itemDisabled="true" />
+				<f:selectItem itemLabel="A" itemValue="A" />
+				<f:selectItem itemLabel="B" itemValue="B" />
+				<f:selectItem itemLabel="C" itemValue="C" />
+				<f:selectItem itemLabel="D" itemValue="D" />
+				<f:selectItem itemLabel="E" itemValue="E" />
+			</p:selectOneMenu>
+			<div class="EmptyBox"></div>
+
+			<p:selectOneMenu id="tempo" styleClass="Wid100" required="true"
+				placeholder="Qual o seu tempo disponível? (*)" autocomplete="off"
+				requiredMessage="Selecione quanto tempo disponível"
+				value="#{meusObjetivosBean.dados.tempoDisponivel}">
+				<f:selectItem itemLabel="Selecione quanto tempo disponível"
+					noSelectionOption="true" itemDisabled="true" />
+				<f:selectItem itemLabel="30 minutos" itemValue="30" />
+				<f:selectItem itemLabel="1 hora" itemValue="60" />
+				<f:selectItem itemLabel="1 hora e 30 minutos" itemValue="90" />
+				<f:selectItem itemLabel="2 horas" itemValue="120" />
+			</p:selectOneMenu>
+			<div class="EmptyBox"></div>
+
+			<p:selectOneMenu id="dias" styleClass="Wid100" required="true"
+				placeholder="Quantos dias você tem disponível? (*)"
+				autocomplete="off"
+				value="#{meusObjetivosBean.dados.diasDisponiveis}"
+				requiredMessage="Selecione a quantidade de dias disponíveis">
+				<f:selectItem itemLabel="Selecione a quantidade de dias disponíveis"
+					noSelectionOption="true" itemDisabled="true" />
+				<f:selectItem itemLabel="1 dia" itemValue="1" />
+				<f:selectItem itemLabel="2 dias" itemValue="2" />
+				<f:selectItem itemLabel="3 dias" itemValue="3" />
+				<f:selectItem itemLabel="4 dias" itemValue="4" />
+				<f:selectItem itemLabel="5 dias" itemValue="5" />
+				<f:selectItem itemLabel="6 dias" itemValue="6" />
+				<f:selectItem itemLabel="7 dias" itemValue="7" />
+			</p:selectOneMenu>
+			<div class="EmptyBox"></div>
+			<p:commandButton value="Salvar" oncomplete="PF('dlgEditar').hide();"
+				actionListener="#{meusObjetivosBean.editar}" update="frmPrincipal"
+				styleClass="Wid100 Button RedButton" />
+		</p:dialog>
+	</h:form>
 </h:body>
 </html>

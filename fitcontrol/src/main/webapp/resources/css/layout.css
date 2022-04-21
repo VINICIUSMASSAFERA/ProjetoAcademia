@@ -14,6 +14,10 @@
 	font-weight: bolder !important;
 }
 
+.FontSize4 {
+	font-size: 1.4em !important;
+}
+
 .White {
 	color: #fff !important;
 }
@@ -42,6 +46,14 @@
 .Button {
 	border: 0px solid !important;
 	margin-top: 10px !important;
+	font-weight: bolder !important;
+}
+
+.Bold {
+	font-weight: bold !important;
+}
+
+.Bolder {
 	font-weight: bolder !important;
 }
 
@@ -215,4 +227,26 @@ body .ui-panel .ui-panel-titlebar {
 	background: #ff3036;
 	border: none;
 	color: white;
+}
+
+body .ui-carousel .ui-carousel-header {
+	background: #ff3036;
+	border: none;
+	color: white;
+}
+
+body .ui-carousel .ui-carousel-page-links .ui-carousel-page-link.ui-icon-radio-on
+	{
+	color: #6c757d;
+}
+
+body .ui-panelgrid .ui-panelgrid-cell.ui-widget-header {
+	background: #ff3036;
+	color: white;
+	border: 1px solid #ff3036;
+}
+
+body .ui-panelgrid .ui-panelgrid-cell {
+	padding: 5px !important;
+	border: 1px solid #3e3e3e ! important;
 }

@@ -24,10 +24,10 @@
 	<div class="topnav">
 		<p:graphicImage name="logo.png" library="img" styleClass="Logo" />
 
-		<a href="#">Home</a> <a href="./meu_treino.xhtml">Meu Treino</a> <a
-			href="./meus_objetivos.xhtml">Meus Objetivos</a> <a
-			href="./historico.xhtml">Histórico</a> <a class="active"
-			href="./dicas_semana.xhtml">Dicas da Semana</a>
+		<a href="./inicial.xhtml">Home</a> <a href="./meu_treino.xhtml">Meu Treino</a> 
+		<a href="./meus_objetivos.xhtml">Meus Objetivos</a> 
+		<a href="./historico.xhtml">Histórico</a> 
+		<a class="active" href="./dicas_semana.xhtml">Dicas da Semana</a>
 	</div>
 	<div class="EmptyBox20"></div>
 	<p:growl id="growl">
@@ -65,15 +65,21 @@
 			</p:panelGrid>
 			<div class="EmptyBox20"></div>
 		</p:panel>
-		<p:dataTable value="#{dicasSemanaBean.dicasDaSemana}" var="dica">
-			<p:column headerText="Dica">
-				#{dica.dica}
-			</p:column>
-			<p:column headerText="Descrição">
-				#{dica.descricao}
-			</p:column>
 
-		</p:dataTable>
+		<div class="card">
+			<p:carousel circular="true" value="#{dicasSemanaBean.dicasDaSemana}"
+				var="dica" numVisible="1" autoplayInterval="3000">
+				<f:facet name="header">
+					<h5>Dicas da Semana</h5>
+				</f:facet>
+				<p:tab>
+					<p:panelGrid columns="1" styleClass="Wid100 ui-panelgrid-blank AlignCenter">
+						<p:outputLabel value="#{dica.dica}" styleClass="Bold"/>
+						<p:outputLabel value="#{dica.descricao}"/>
+					</p:panelGrid>
+				</p:tab>
+			</p:carousel>
+		</div>
 	</h:form>
 </h:body>
 </html>
