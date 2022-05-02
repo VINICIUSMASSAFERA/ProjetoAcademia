@@ -24,13 +24,54 @@
 	<div class="topnav">
 		<p:graphicImage name="logo.png" library="img" styleClass="Logo" />
 
-		<a href="./inicial.xhtml">Home</a>
-		<a class="active" href="./meu_treino.xhtml">Meu Treino</a>
-		<a href="./meus_objetivos.xhtml">Meus Objetivos</a>
-		<a href="./historico.xhtml">Histórico</a>
-		<a href="./dicas_semana.xhtml">Dicas da Semana</a>
+		<a href="./inicial.xhtml">Home</a> <a class="active"
+			href="./meu_treino.xhtml">Meu Treino</a> <a
+			href="./meus_objetivos.xhtml">Meus Objetivos</a> <a
+			href="./historico.xhtml">Histórico</a> <a href="./dicas_semana.xhtml">Dicas
+			da Semana</a>
 	</div>
 	<div class="EmptyBox20"></div>
+	<p:growl id="growl">
+		<p:autoUpdate />
+	</p:growl>
+	<h:form id="frmPrincipal">
+		<p:panel header="Novo Treino"
+			rendered="#{autorizacaoBean.usuarioLogado.admin}">
+			<p:panelGrid columns="2" styleClass="Wid100 ui-panelgrid-blank">
+				<p:outputLabel value="Título:" for="titulo" styleClass="White" />
+				<p:inputText id="titulo" placeholder="Título"
+					requiredMessage="O campo titulo é obrigatório" styleClass="Wid100"
+					autocomplete="off" value="#{treinoBean.treino.titulo}"
+					required="true" />
 
+				<p:outputLabel value="Descrição:" for="descricao" styleClass="White" />
+				<p:inputText id="descricao" placeholder="Descrição"
+					requiredMessage="O campo descrição é obrigatório"
+					styleClass="Wid100" autocomplete="off"
+					value="#{treinoBean.treino.descricao}" required="true" />
+
+				<p:outputLabel value="Objetivo:" for="objetivo" styleClass="White" />
+				<p:selectOneMenu id="objetivo" styleClass="Wid100" required="true"
+					placeholder="Objetivo? (*)" autocomplete="off"
+					value="#{treinoBean.treino.objetivo}"
+					requiredMessage="Selecione o objetivo">
+					<f:selectItem itemLabel="Selecione o objetivo"
+						noSelectionOption="true" itemDisabled="true" />
+					<f:selectItem itemLabel="A" itemValue="A" />
+					<f:selectItem itemLabel="B" itemValue="B" />
+					<f:selectItem itemLabel="C" itemValue="C" />
+					<f:selectItem itemLabel="D" itemValue="D" />
+					<f:selectItem itemLabel="E" itemValue="E" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+			<p:panelGrid columns="1" styleClass="Wid100 ui-panelgrid-blank">
+				<p:commandButton value="Salvar Dica"
+					styleClass="Wid100 Button RedButton"
+					actionListener="#{treinoBean.salvar()}" update="frmPrincipal growl" />
+			</p:panelGrid>
+			<div class="EmptyBox20"></div>
+		</p:panel>
+		
+	</h:form>
 </h:body>
 </html>

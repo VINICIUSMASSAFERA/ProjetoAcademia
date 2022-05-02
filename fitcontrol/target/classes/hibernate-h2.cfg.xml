@@ -22,6 +22,7 @@
 		<property name="hibernate.dbcp.maxWaitMillis">-1</property>
 
 		<mapping class="br.com.fatec.fitcontrol.domain.Usuario" />
+		<mapping class="br.com.fatec.fitcontrol.domain.Treino" />
 		<mapping class="br.com.fatec.fitcontrol.domain.DicasSemana" />
 		<mapping
 			class="br.com.fatec.fitcontrol.domain.DadosObjetivoUsuario" />
