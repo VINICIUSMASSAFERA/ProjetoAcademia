@@ -28,6 +28,7 @@
 		<a href="./meus_objetivos.xhtml">Meus Objetivos</a> 
 		<a href="./historico.xhtml">Histórico</a> 
 		<a class="active" href="./dicas_semana.xhtml">Dicas da Semana</a>
+		<a href="./login.xhtml"><i style="color: red !important">Sair</i></a>
 	</div>
 	<div class="EmptyBox20"></div>
 	<p:growl id="growl">
@@ -68,7 +69,7 @@
 
 		<div class="card">
 			<p:carousel circular="true" value="#{dicasSemanaBean.dicasDaSemana}"
-				var="dica" numVisible="1" autoplayInterval="3000">
+				var="dica" numVisible="1" autoplayInterval="3000" >
 				<f:facet name="header">
 					<h5>Dicas da Semana</h5>
 				</f:facet>

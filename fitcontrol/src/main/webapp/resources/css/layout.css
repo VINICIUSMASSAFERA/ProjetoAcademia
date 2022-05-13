@@ -246,7 +246,43 @@ body .ui-panelgrid .ui-panelgrid-cell.ui-widget-header {
 	border: 1px solid #ff3036;
 }
 
+body .ui-paginator {
+	background: #ff3036;
+	color: white;
+	border: 1px solid #ff3036;
+}
+
+body .ui-datatable thead th {
+	background: #ff3036;
+	color: white;
+	border: 1px solid #ff3036;
+}
+
+body .ui-datatable .ui-datatable-data>tr {
+	background-color: #615b5b;
+	border: 1px solid #615b5b ! important;
+	color: white;
+}
+
+body .ui-paginator .ui-paginator-first, body .ui-paginator .ui-paginator-prev,
+	body .ui-paginator .ui-paginator-next, body .ui-paginator .ui-paginator-last
+	{
+	color: white;
+}
+
 body .ui-panelgrid .ui-panelgrid-cell {
 	padding: 5px !important;
-	border: 1px solid #3e3e3e ! important;
+	background: #615b5b;
+	color: white;
+}
+
+.ui-panelgrid.ui-panelgrid-blank .ui-panelgrid-content.ui-widget-content,
+	.ui-panelgrid.ui-panelgrid-blank .ui-panelgrid-header.ui-widget-header,
+	.ui-panelgrid.ui-panelgrid-blank .ui-panelgrid-footer.ui-widget-header,
+	.ui-panelgrid.ui-panelgrid-blank .ui-panelgrid-header>tr.ui-widget-header,
+	.ui-panelgrid.ui-panelgrid-blank tbody>tr.ui-widget-content,
+	.ui-panelgrid.ui-panelgrid-blank tbody>tr.ui-widget-content>td.ui-panelgrid-cell,
+	.ui-panelgrid.ui-panelgrid-blank .ui-panelgrid-footer>tr.ui-widget-footer
+	{
+	background: #615b5b !important;
 }

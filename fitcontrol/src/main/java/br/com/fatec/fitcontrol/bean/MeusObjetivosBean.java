@@ -19,7 +19,6 @@ public class MeusObjetivosBean {
 	private Usuario usuarioLogado;
 	private DadosObjetivoUsuario dados;
 
-	private UsuarioService usuarioService;
 	private DadosObjetivoUsuarioService dadosService;
 
 	@PostConstruct
@@ -28,7 +27,6 @@ public class MeusObjetivosBean {
 		usuarioLogado = autorizacaoBean.getUsuarioLogado();
 		dados = new DadosObjetivoUsuario();
 
-		usuarioService = new UsuarioService();
 		dadosService = new DadosObjetivoUsuarioService();
 
 		try {

@@ -28,12 +28,14 @@
 			href="./meu_treino.xhtml">Meu Treino</a> <a
 			href="./meus_objetivos.xhtml">Meus Objetivos</a> <a
 			href="./historico.xhtml">Histórico</a> <a href="./dicas_semana.xhtml">Dicas
-			da Semana</a>
+			da Semana</a> <a href="./login.xhtml"><i
+			style="color: red !important">Sair</i></a>
 	</div>
 	<div class="EmptyBox20"></div>
 	<p:growl id="growl">
 		<p:autoUpdate />
 	</p:growl>
+
 	<h:form id="frmPrincipal">
 		<p:panel header="Novo Treino"
 			rendered="#{autorizacaoBean.usuarioLogado.admin}">
@@ -57,21 +59,135 @@
 					requiredMessage="Selecione o objetivo">
 					<f:selectItem itemLabel="Selecione o objetivo"
 						noSelectionOption="true" itemDisabled="true" />
-					<f:selectItem itemLabel="A" itemValue="A" />
-					<f:selectItem itemLabel="B" itemValue="B" />
-					<f:selectItem itemLabel="C" itemValue="C" />
-					<f:selectItem itemLabel="D" itemValue="D" />
-					<f:selectItem itemLabel="E" itemValue="E" />
+					<f:selectItem itemLabel="Objetivo de academia: Emagrecer"
+						itemValue="Objetivo de treino de academia: Emagrecer" />
+					<f:selectItem
+						itemLabel="Objetivo de academia: Condicionamento Físico"
+						itemValue="Objetivo de academia: Condicionamento Físico" />
+					<f:selectItem
+						itemLabel="Objetivo de academia: Ganho de massa muscular"
+						itemValue="Objetivo de academia: Ganho de massa muscular" />
+					<f:selectItem itemLabel="Objetivo de academia: Bem-estar"
+						itemValue="Objetivo de academia: Bem-estar" />
 				</p:selectOneMenu>
 			</p:panelGrid>
 			<p:panelGrid columns="1" styleClass="Wid100 ui-panelgrid-blank">
 				<p:commandButton value="Salvar Dica"
 					styleClass="Wid100 Button RedButton"
-					actionListener="#{treinoBean.salvar()}" update="frmPrincipal growl" />
+					actionListener="#{treinoBean.salvar()}"
+					update="frmPrincipal frm growl" />
 			</p:panelGrid>
 			<div class="EmptyBox20"></div>
 		</p:panel>
-		
+	</h:form>
+
+	<h:form id="frm">
+		<p:panel header="Todos os treinos"
+			rendered="#{autorizacaoBean.usuarioLogado.admin}">
+			<p:dataTable reflow="true" id="dtTreinos" selectionMode="single"
+				selection="#{treinoBean.treino}" value="#{treinoBean.treinos}"
+				var="treino" paginator="true" rowKey="#{treino.id}"
+				paginatorPosition="bottom">
+
+				<p:ajax event="rowSelect" oncomplete="PF('dlgTreino').show()"
+					update="frm:dlgTreino" />
+
+				<p:column headerText="ID">
+					<h:outputText value="#{treino.id}" />
+				</p:column>
+				<p:column headerText="Título">
+					<h:outputText value="#{treino.titulo}" />
+				</p:column>
+				<p:column headerText="Descrição">
+					<h:outputText value="#{treino.descricao}" />
+				</p:column>
+				<p:column headerText="Objetivo">
+					<h:outputText value="#{treino.objetivo}" />
+				</p:column>
+				<p:column headerText="Data de Cadastro">
+					<h:outputText value="#{treino.dataCriacao}" />
+				</p:column>
+				<p:column headerText="Opções">
+					<p:commandButton icon="fa fa-trash" update="frm:dtTreinos growl"
+						actionListener="#{treinoBean.excluir(treino)}"
+						styleClass="Wid100 Button RedButton">
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+
+		<p:dialog closable="true" resizable="false" responsive="true"
+			modal="true" widgetVar="dlgTreino" id="dlgTreino">
+			<p:panelGrid columns="2" styleClass="Wid100 ui-panelgrid-blank">
+				<p:outputLabel value="Título:" for="titulo2" styleClass="White" />
+				<p:inputText id="titulo2" placeholder="Título"
+					requiredMessage="O campo titulo é obrigatório" styleClass="Wid100"
+					autocomplete="off" value="#{treinoBean.treino.titulo}"
+					required="true" />
+
+				<p:outputLabel value="Descrição:" for="descricao2"
+					styleClass="White" />
+				<p:inputText id="descricao2" placeholder="Descrição"
+					requiredMessage="O campo descrição é obrigatório"
+					styleClass="Wid100" autocomplete="off"
+					value="#{treinoBean.treino.descricao}" required="true" />
+
+				<p:outputLabel value="Objetivo:" for="objetivo2" styleClass="White" />
+				<p:selectOneMenu id="objetivo2" styleClass="Wid100" required="true"
+					placeholder="Objetivo? (*)" autocomplete="off"
+					value="#{treinoBean.treino.objetivo}"
+					requiredMessage="Selecione o objetivo">
+					<f:selectItem itemLabel="Selecione o objetivo"
+						noSelectionOption="true" itemDisabled="true" />
+					<f:selectItem itemLabel="Objetivo de academia: Emagrecer"
+						itemValue="Objetivo de treino de academia: Emagrecer" />
+					<f:selectItem
+						itemLabel="Objetivo de academia: Condicionamento Físico"
+						itemValue="Objetivo de academia: Condicionamento Físico" />
+					<f:selectItem
+						itemLabel="Objetivo de academia: Ganho de massa muscular"
+						itemValue="Objetivo de academia: Ganho de massa muscular" />
+					<f:selectItem itemLabel="Objetivo de academia: Bem-estar"
+						itemValue="Objetivo de academia: Bem-estar" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+			<p:panelGrid columns="1" styleClass="Wid100 ui-panelgrid-blank">
+				<p:commandButton value="Salvar Dica"
+					styleClass="Wid100 Button RedButton"
+					actionListener="#{treinoBean.salvar()}"
+					update="frm:dtTreinos frm:dlgTreino growl" />
+			</p:panelGrid>
+		</p:dialog>
+
+	</h:form>
+
+	<h:form id="frmTreinos">
+		<p:panel header="Meus treinos de hoje">
+			<p:commandButton styleClass="Wid100 Button RedButton"
+				value="Gerar treino de hoje" update="frmTreinos"
+				rendered="#{!treinoBean.treinoGeradoHoje}"
+				actionListener="#{treinoBean.gerarTreino}" />
+			
+			<div class="EmptyBox20"></div>
+			
+			<p:dataTable value="#{treinoBean.treinosHoje}" 
+				var="hist" reflow="true">
+				
+				<p:column headerText="Treino">
+					<h:outputText value="#{hist.treino.titulo}" />
+				</p:column>
+				
+				<p:column headerText="Descrição">
+					<h:outputText value="#{hist.treino.descricao}" />
+				</p:column>
+				
+				<p:column headerText="Data">
+					<h:outputText value="#{hist.dataTreino}" >
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
 	</h:form>
 </h:body>
 </html>

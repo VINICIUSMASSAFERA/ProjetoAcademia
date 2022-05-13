@@ -24,13 +24,35 @@
 	<div class="topnav">
 		<p:graphicImage name="logo.png" library="img" styleClass="Logo" />
 
-		<a href="./inicial.xhtml">Home</a>
-		<a href="./meu_treino.xhtml">Meu Treino</a>
-		<a href="./meus_objetivos.xhtml">Meus Objetivos</a>
-		<a class="active" href="./historico.xhtml">Histórico</a>
-		<a href="./dicas_semana.xhtml">Dicas da Semana</a>
+		<a href="./inicial.xhtml">Home</a> <a href="./meu_treino.xhtml">Meu
+			Treino</a> <a href="./meus_objetivos.xhtml">Meus Objetivos</a> <a
+			class="active" href="./historico.xhtml">Histórico</a> <a
+			href="./dicas_semana.xhtml">Dicas da Semana</a> <a
+			href="./login.xhtml"><i style="color: red !important">Sair</i></a>
 	</div>
 	<div class="EmptyBox20"></div>
+
+	<h:form id="frmPrincipal">
+		<p:panel header="Meu histórico de treinos">
+			<p:dataTable value="#{historicoBean.treinosHistorico}" var="hist"
+				reflow="true" paginator="true" paginatorPosition="bottom" 
+				rowKey="#{hist.id}">
+				<p:column headerText="Treino">
+					<h:outputText value="#{hist.treino.titulo}" />
+				</p:column>
+
+				<p:column headerText="Descrição">
+					<h:outputText value="#{hist.treino.descricao}" />
+				</p:column>
+
+				<p:column headerText="Data">
+					<h:outputText value="#{hist.dataTreino}" >
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
 
 </h:body>
 </html>

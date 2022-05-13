@@ -1,5 +1,7 @@
 package br.com.fatec.fitcontrol.util;
 
+import java.io.IOException;
+
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
@@ -16,18 +18,27 @@ public class AutenticacaoListener implements PhaseListener {
 	public void afterPhase(PhaseEvent event) {
 		String paginaAtual = Faces.getViewId();
 
-		boolean ehPaginaDeAutenticacao = paginaAtual.contains("login.xhtml") || paginaAtual.contains("cadastrar.xhtml");
+		boolean ehPaginaDeAutenticacao = paginaAtual.contains("login.xhtml") 
+				|| paginaAtual.contains("cadastrar.xhtml");
 
 		if (!ehPaginaDeAutenticacao) {
 			AutorizacaoBean autorizacaoBean = Faces.getSessionAttribute("autorizacaoBean");
 
 			if (autorizacaoBean == null) {
-				Faces.navigate("/pages/login.xhtml");
+				try {
+					Faces.redirect("/pages/login.xhtml", null);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 
 			Usuario usuario = autorizacaoBean.getUsuarioLogado();
 			if (usuario == null) {
-				Faces.navigate("/pages/login.xhtml");
+				try {
+					Faces.redirect("/pages/login.xhtml", null);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
