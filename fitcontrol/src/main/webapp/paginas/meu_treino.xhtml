@@ -21,16 +21,19 @@
 </h:head>
 
 <h:body>
-	<div class="topnav">
-		<p:graphicImage name="logo.png" library="img" styleClass="Logo" />
-
-		<a href="./inicial.xhtml">Home</a> <a class="active"
-			href="./meu_treino.xhtml">Meu Treino</a> <a
-			href="./meus_objetivos.xhtml">Meus Objetivos</a> <a
-			href="./historico.xhtml">Histórico</a> <a href="./dicas_semana.xhtml">Dicas
-			da Semana</a> <a href="./login.xhtml"><i
-			style="color: red !important">Sair</i></a>
-	</div>
+	<h:form id="frmNav">
+		<div class="topnav">
+			<p:graphicImage name="logo.png" library="img" styleClass="Logo" />
+	
+			<a href="./inicial.xhtml">Home</a> <a class="active"
+				href="./meu_treino.xhtml">Meu Treino</a> <a
+				href="./meus_objetivos.xhtml">Meus Objetivos</a> <a
+				href="./historico.xhtml">Histórico</a> <a href="./dicas_semana.xhtml">Dicas
+				da Semana</a> 
+				<p:commandLink value="Usuários" rendered="#{autorizacaoBean.usuarioLogado.admin}" actionListener="#{viewBean.redirecionaUsuarios}"/>
+				<a href="./login.xhtml"><i style="color: red !important">Sair</i></a>
+		</div>
+	</h:form>
 	<div class="EmptyBox20"></div>
 	<p:growl id="growl">
 		<p:autoUpdate />
@@ -105,7 +108,9 @@
 					<h:outputText value="#{treino.objetivo}" />
 				</p:column>
 				<p:column headerText="Data de Cadastro">
-					<h:outputText value="#{treino.dataCriacao}" />
+					<h:outputText value="#{treino.dataCriacao}" >
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
 				</p:column>
 				<p:column headerText="Opções">
 					<p:commandButton icon="fa fa-trash" update="frm:dtTreinos growl"
@@ -175,6 +180,10 @@
 				
 				<p:column headerText="Treino">
 					<h:outputText value="#{hist.treino.titulo}" />
+				</p:column>
+				
+				<p:column headerText="Objetivo principal do treino">
+					<h:outputText value="#{hist.treino.objetivo}" />
 				</p:column>
 				
 				<p:column headerText="Descrição">

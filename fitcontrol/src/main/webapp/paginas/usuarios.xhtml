@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+	</f:facet>
+	<title>Usuários</title>
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['img/favicon.png']}" />
+	<h:outputStylesheet library="css" name="layout.css" />
+	<h:outputScript library="js" name="prime.js" />
+</h:head>
+
+<h:body>
+	<h:form id="frmNav">
+		<div class="topnav">
+			<p:graphicImage name="logo.png" library="img" styleClass="Logo" />
+
+			<a href="./inicial.xhtml">Home</a> <a href="./meu_treino.xhtml">Meu
+				Treino</a> <a href="./meus_objetivos.xhtml">Meus Objetivos</a> <a
+				href="./historico.xhtml">Histórico</a> <a
+				href="./dicas_semana.xhtml">Dicas da Semana</a>
+			<p:commandLink value="Usuários"
+				rendered="#{autorizacaoBean.usuarioLogado.admin}"
+				actionListener="#{viewBean.redirecionaUsuarios}" />
+			<a href="./login.xhtml"><i style="color: red !important">Sair</i></a>
+		</div>
+	</h:form>
+	<div class="EmptyBox20"></div>
+	<p:growl id="growl">
+		<p:autoUpdate />
+	</p:growl>
+	<h:form id="frmPrincipal">
+		<p:panel header="Todos usuários">
+			<p:dataTable value="#{usuariosBean.usuarios}" var="usuario"
+				reflow="true" paginator="true" paginatorPosition="bottom"
+				rowKey="#{usuario.cpf}" selectionMode="single"
+				selection="#{usuariosBean.usuario}">
+
+				<p:ajax event="rowSelect" oncomplete="PF('dlgDetalhes').show();"
+					update="frmPrincipal" />
+
+				<p:column headerText="CPF">
+					<h:outputText value="#{usuario.cpf}" />
+				</p:column>
+
+				<p:column headerText="Nome">
+					<h:outputText value="#{usuario.nome}" />
+				</p:column>
+
+				<p:column headerText="Data de Nascimento">
+					<h:outputText value="#{usuario.dataDeNascimento}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+
+		<p:dialog id="dlgDetalhes" widgetVar="dlgDetalhes" draggable="false"
+			header="Editar usuário" modal="true" resizable="false"
+			responsive="true" closable="true" closeOnEscape="true">
+			<p:inputText id="cpf" styleClass="Wid100" readonly="true"
+				value="#{usuariosBean.usuario.cpf}" />
+			<div class="EmptyBox"></div>
+
+			<p:inputText id="nome" placeholder="Nome (*)" size="100"
+				required="true" requiredMessage="O campo Nome é obrigatório"
+				styleClass="Wid100" autocomplete="off"
+				value="#{usuariosBean.usuario.nome}" />
+			<div class="EmptyBox"></div>
+
+			<p:datePicker id="dataNascimento"
+				placeholder="Data de Nascimento (*)"
+				value="#{usuariosBean.usuario.dataDeNascimento}" required="true"
+				requiredMessage="O campo Data de Nascimento é obrigatório"
+				styleClass="Wid100 AlignLeft" inputStyleClass="Wid100"
+				autocomplete="off" />
+			<div class="EmptyBox20"></div>
+
+			<p:inputText id="email" placeholder="E-mail (*)" size="100"
+				required="true" requiredMessage="O campo Email é obrigatório"
+				styleClass="Wid100" autocomplete="off"
+				value="#{usuariosBean.usuario.email}" />
+			<div class="EmptyBox"></div>
+
+			<p:inputText id="celular" placeholder="Celular" size="15"
+				styleClass="Wid100" autocomplete="off"
+				value="#{usuariosBean.usuario.celular}" />
+			<div class="EmptyBox"></div>
+			
+			<p:selectBooleanButton onLabel="Administrador" offLabel="Usuário Normal" 
+				value="#{usuariosBean.usuario.admin}" styleClass="Wid100" id="admSwitch">
+				<p:tooltip position="top" value="Clique para mudar o valor" for="admSwitch"/>
+			</p:selectBooleanButton>
+			
+			<p:commandButton value="Salvar" styleClass="Wid100 Button RedButton"
+				actionListener="#{usuariosBean.salvar()}"
+				update="frmPrincipal growl" />
+		</p:dialog>
+	</h:form>
+
+</h:body>
+</html>

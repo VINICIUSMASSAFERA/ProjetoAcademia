@@ -21,16 +21,20 @@
 </h:head>
 
 <h:body>
-	<div class="topnav">
-		<p:graphicImage name="logo.png" library="img" styleClass="Logo" />
-
-		<a class="active" href="./inicial.xhtml">Home</a>
-		<a href="./meu_treino.xhtml">Meu Treino</a>
-		<a href="./meus_objetivos.xhtml">Meus Objetivos</a>
-		<a href="./historico.xhtml">Histórico</a>
-		<a href="./dicas_semana.xhtml">Dicas da Semana</a>
-		<a href="./login.xhtml"><i style="color: red !important">Sair</i></a>
-	</div>
+	<h:form id="frmNav">
+		<div class="topnav">
+			<p:graphicImage name="logo.png" library="img" styleClass="Logo" />
+	
+			<a class="active" href="./inicial.xhtml">Home</a>
+			<a href="./meu_treino.xhtml">Meu Treino</a>
+			<a href="./meus_objetivos.xhtml">Meus Objetivos</a>
+			<a href="./historico.xhtml">Histórico</a>
+			<a href="./dicas_semana.xhtml">Dicas da Semana</a>
+			<p:commandLink value="Usuários" rendered="#{autorizacaoBean.usuarioLogado.admin}" 
+				actionListener="#{viewBean.redirecionaUsuarios}"/>
+			<a href="./login.xhtml"><i style="color: red !important">Sair</i></a>
+		</div>
+	</h:form>
 	<div class="EmptyBox20"></div>
 	<h:form id="frm">
 		<a href="./meu_treino.xhtml" class="CardButton Wid100 MarginTop10"><i class="pi pi-user"/> MEU TREINO </a>

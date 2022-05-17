@@ -49,7 +49,13 @@ public class TreinoBean {
 		treinoService = new TreinoService();
 		historicoService = new HistoricoService();
 		dadosService = new DadosObjetivoUsuarioService();
-
+		
+		try {
+			dados = dadosService.buscarPorUsuario(usuarioLogado);
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
+		
 		listarTreinos();
 		buscarTreinoUsuario();
 	}
@@ -125,7 +131,17 @@ public class TreinoBean {
 
 	private void listarTreinos() {
 		try {
-			treinos = treinoService.listar();
+			treinos = treinoService.listarPorObjetivo(dados.getObjetivo());
+			ArrayList<Treino> aux = (ArrayList<Treino>) treinoService.listar();
+			for (Treino treino : aux) {
+				if(!treinos.contains(treino)) {
+					treinos.add(treino);
+				}
+			}
+			
+			for (Treino treino : treinos) {
+				System.out.println(treino.getDescricao() + " " + treino.getObjetivo());
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
