@@ -1,6 +1,7 @@
 package br.com.fatec.fitcontrol.bean;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -10,6 +11,7 @@ import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 
 import br.com.fatec.fitcontrol.domain.Usuario;
+import br.com.fatec.fitcontrol.exception.DAOException;
 import br.com.fatec.fitcontrol.service.UsuarioService;
 
 @ManagedBean
@@ -26,6 +28,21 @@ public class AutorizacaoBean {
 	void init() {
 		usuarioLogado = new Usuario();
 		usuarioService = new UsuarioService();
+
+		try {
+			Usuario us = new Usuario();
+			us.setCpf("11111111111");
+			us.setAdmin(true);
+			us.setCelular("999999999");
+			us.setDataDeCadastro(new Date());
+			us.setDataDeNascimento(new Date());
+			us.setEmail("teste@teste.com");
+			us.setNome("Administrador");
+			us.setSenha("admin");
+			usuarioService.salvar(us);
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void logar() {
