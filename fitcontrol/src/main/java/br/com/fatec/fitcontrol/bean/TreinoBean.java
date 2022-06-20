@@ -130,6 +130,14 @@ public class TreinoBean {
 	}
 
 	private void listarTreinos() {
+		if(dados == null) {
+			try {
+				treinos = treinoService.listar();
+			} catch (DAOException e) {
+				e.printStackTrace();
+			}
+			return;
+		}
 		try {
 			treinos = treinoService.listarPorObjetivo(dados.getObjetivo());
 			ArrayList<Treino> aux = (ArrayList<Treino>) treinoService.listar();

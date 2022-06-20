@@ -253,9 +253,9 @@ body .ui-paginator {
 }
 
 body .ui-datatable thead th {
-	background: #ff3036;
+	background: #b7474a;
 	color: white;
-	border: 1px solid #ff3036;
+	border: 1px solid #b7474a;
 }
 
 body .ui-datatable .ui-datatable-data>tr {

@@ -75,7 +75,7 @@
 				</p:selectOneMenu>
 			</p:panelGrid>
 			<p:panelGrid columns="1" styleClass="Wid100 ui-panelgrid-blank">
-				<p:commandButton value="Salvar Dica"
+				<p:commandButton value="Salvar Novo Treino"
 					styleClass="Wid100 Button RedButton"
 					actionListener="#{treinoBean.salvar()}"
 					update="frmPrincipal frm growl" />
@@ -90,7 +90,7 @@
 			<p:dataTable reflow="true" id="dtTreinos" selectionMode="single"
 				selection="#{treinoBean.treino}" value="#{treinoBean.treinos}"
 				var="treino" paginator="true" rowKey="#{treino.id}"
-				paginatorPosition="bottom">
+				paginatorPosition="bottom" rows="5">
 
 				<p:ajax event="rowSelect" oncomplete="PF('dlgTreino').show()"
 					update="frm:dlgTreino" />

@@ -10,8 +10,10 @@ import javax.faces.bean.SessionScoped;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 
+import br.com.fatec.fitcontrol.domain.DadosObjetivoUsuario;
 import br.com.fatec.fitcontrol.domain.Usuario;
 import br.com.fatec.fitcontrol.exception.DAOException;
+import br.com.fatec.fitcontrol.service.DadosObjetivoUsuarioService;
 import br.com.fatec.fitcontrol.service.UsuarioService;
 
 @ManagedBean
@@ -28,6 +30,7 @@ public class AutorizacaoBean {
 	void init() {
 		usuarioLogado = new Usuario();
 		usuarioService = new UsuarioService();
+		DadosObjetivoUsuarioService dadosService = new DadosObjetivoUsuarioService();
 
 		try {
 			Usuario us = new Usuario();
@@ -40,6 +43,14 @@ public class AutorizacaoBean {
 			us.setNome("Administrador");
 			us.setSenha("admin");
 			usuarioService.salvar(us);
+			
+			DadosObjetivoUsuario dados = new DadosObjetivoUsuario();
+			dados.setDiasDisponiveis("5");
+			dados.setTempoDisponivel("120");
+			dados.setUsuario(us.getCpf());
+			dados.setObjetivo("Objetivo de academia: Condicionamento Físico");
+			dadosService.salvar(dados);
+			
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
